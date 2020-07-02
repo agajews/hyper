@@ -542,7 +542,7 @@ impl ConnectingTcpRemote {
             }
         }
 
-        Err(err.take().expect("missing connect error"))
+        Err(err.unwrap_or(io::Error::new(io::ErrorKind::Other, "missing connect error")))        
     }
 }
 
